@@ -8,7 +8,7 @@
  定义全局变量
  */
 function getURL(){
-	return window.location.href.split("Jaywin/")[0]+"Jaywin/";
+	return window.location.href;
 };
 var PATH = {
 	URL:getURL()
