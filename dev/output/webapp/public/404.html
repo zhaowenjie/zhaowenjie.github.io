@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background: #f1f4f9;
+		}
+		.base404{
+			background: url(/imgs/base/404.jpg);
+			width: 590px;
+			height: 275px;
+			margin: 200px auto 0;
+			position: relative;
+		}
+		#back{
+			width: 65px;
+			height: 20px;
+			position: absolute;
+			top: 220px;
+			left: 365px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="base404">
+		<div id="back"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	console.info('图片引用地址：http://mux.alimama.com/posts/1441');
+	document.getElementById('back').onclick = function(){
+		window.history.back();
+	}
+</script>
+</html>

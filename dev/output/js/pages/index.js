@@ -1,0 +1,1 @@
+$(function(){function e(){n()}function n(){{var e=0;setInterval(function(){e++,e>4?e=1:e,o(e)},3e3)}}function o(e){$(".page-header").fadeOut("slow"),$(".banner"+e).fadeIn("slow")}var f,i,r=navigator.userAgent;r=r.toLowerCase(),f=r.indexOf("chrome")>=0?!0:!1,i=r.indexOf("firefox")>=0?!0:!1,console.log(r,"ischrome",f,"isfirefox",i),e()});
