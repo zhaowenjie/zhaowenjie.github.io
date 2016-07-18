@@ -1,0 +1,24 @@
+/*
+ * duoshuo JS
+ *
+ * @author wenjie
+ * @since 09.22.2015
+ * @version 1.0.0
+ * @lastUpdatedBy Zhao Wenjie at 09.22.2015
+ */
+ .comments #ds-thread #ds-reset .ds-like-tooltip ul{
+ 	width: 180px;
+ }
+#ds-thread #ds-reset .ds-like-tooltip ul li{
+	padding: 5px;
+	width: 75px;
+	float: left;
+ }
+.comments #ds-thread #ds-reset .ds-like-tooltip .ds-like-tooltip-footer{
+	position: absolute;
+	right: 19px;
+	bottom: 14px;
+}
+ .ds-powered-by{
+	display: none;
+}
