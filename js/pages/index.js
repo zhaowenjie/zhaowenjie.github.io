@@ -14,7 +14,7 @@ $(function(){
 		var i = 0;
 		var plays = setInterval(function(){
 			i++ ;
-			i > 4 ? i = 1 : i ;
+			i = i > 4?1:i;
 			play(i);
 		},3000);
 
@@ -24,4 +24,4 @@ $(function(){
 		$('.banner'+num).fadeIn('slow');
 	}
 	init();
-})
+});

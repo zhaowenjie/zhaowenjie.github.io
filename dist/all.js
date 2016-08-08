@@ -26,7 +26,7 @@ var BASE = {
 	},
 	loadHead:function(){
 
-		if(!$('header').length > 0){
+		if($('header').length < 1){
 
 			$('body').prepend('<header></header>');
 
@@ -40,7 +40,7 @@ var BASE = {
 $(function(){
 
 	BASE.init();
-})
+});
 
 /*
  * util JS
@@ -79,7 +79,7 @@ jaywin.Cookie = {
 	del : function(name){
 		var exp = new Date(new Date().getTime()-1);
 		var s = this.read(name);
-		if(s!=null){
+		if(s!==null){
 			document.cookie = name + '=' + s + ';expires=' + exp.toGMTString() + ';path=/';
 		}
 	}
@@ -100,7 +100,7 @@ $(function(){
 		var i = 0;
 		var plays = setInterval(function(){
 			i++ ;
-			i > 4 ? i = 1 : i ;
+			i = i > 4?1:i;
 			play(i);
 		},3000);
 
@@ -110,7 +110,9 @@ $(function(){
 		$('.banner'+num).fadeIn('slow');
 	}
 	init();
-})
+});
+
+console.log('This would be the test JS file.');
 
 /*
  * util.ajax JS
@@ -120,7 +122,7 @@ $(function(){
  * @version 1.0.0
  * @lastUpdatedBy Zhao Wenjie at 09.14.2015
  */
- function(){
+ function XMLHttpRequest(){
 	var request;
 	if(window.XMLHttpRequest){
 		request = new XMLHttpRequest();//IE7+,Firefox,Chrome,Ooera,Safari...
@@ -135,7 +137,8 @@ $(function(){
 // async:同步/异步(false/true)，默认是异步也就是true，可以不用填写
 
 // send(string):发送到服务器（该参数可以填或者不填-----get方法不填或填null，post:一般要填）
-}();
+}
+XMLHttpRequest();
 /*
  * util.event JS
  *
@@ -189,4 +192,4 @@ var eventUtil={
 			event.cancelBubble=true;
 		}
 	}
-}
+};

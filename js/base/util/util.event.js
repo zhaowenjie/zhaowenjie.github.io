@@ -51,4 +51,4 @@ var eventUtil={
 			event.cancelBubble=true;
 		}
 	}
-}
+};

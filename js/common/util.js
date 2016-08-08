@@ -35,7 +35,7 @@ jaywin.Cookie = {
 	del : function(name){
 		var exp = new Date(new Date().getTime()-1);
 		var s = this.read(name);
-		if(s!=null){
+		if(s!==null){
 			document.cookie = name + '=' + s + ';expires=' + exp.toGMTString() + ';path=/';
 		}
 	}

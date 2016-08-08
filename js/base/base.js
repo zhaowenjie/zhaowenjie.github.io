@@ -24,7 +24,7 @@ var BASE = {
 	},
 	loadHead:function(){
 
-		if(!$('header').length > 0){
+		if($('header').length < 1){
 
 			$('body').prepend('<header></header>');
 
@@ -38,4 +38,4 @@ var BASE = {
 $(function(){
 
 	BASE.init();
-})
+});

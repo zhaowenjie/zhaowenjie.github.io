@@ -6,7 +6,7 @@
  * @version 1.0.0
  * @lastUpdatedBy Zhao Wenjie at 09.14.2015
  */
- function(){
+ function XMLHttpRequest(){
 	var request;
 	if(window.XMLHttpRequest){
 		request = new XMLHttpRequest();//IE7+,Firefox,Chrome,Ooera,Safari...
@@ -21,4 +21,5 @@
 // async:同步/异步(false/true)，默认是异步也就是true，可以不用填写
 
 // send(string):发送到服务器（该参数可以填或者不填-----get方法不填或填null，post:一般要填）
-}();
+}
+XMLHttpRequest();
