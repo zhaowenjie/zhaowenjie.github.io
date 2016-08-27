@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>群星收银台用户交互数据统计分析报表</title>
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+</head>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.main{
+		margin: 0 10%;
+	}
+	.title{
+		text-align: center;
+		padding: 20px 0;
+	}
+	.chart-body{
+		width: 50%;
+		float: left;
+	}
+	.chart-body-content{
+		width: 500px;
+		height: 500px;
+		margin: 20px auto;
+	}
+</style>
+<body>
+	<div class="main">
+		<h3 class="title">收银台统计信息</h3>
+		<div class="chart-body">
+			<!-- <div class="chart-title">用户操纵系统统计</div> -->
+			<div class="chart-body-content" id="system-chart-body"></div>
+		</div>
+		<div class="chart-body">
+			<!-- <div class="chart-title">用户浏览器版本统计</div> -->
+			<div class="chart-body-content" id="browser-chart-body"></div>
+		</div>
+	</div>
+	
+</body>
+<script src="//cdn.bootcss.com/echarts/3.2.2/echarts.js"></script>
+<script src="cashier.js"></script>
+</html>
