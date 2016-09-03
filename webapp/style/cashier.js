@@ -36,7 +36,6 @@ var Chart = {
 
 		this.renderSystemChart(systemData);
 		this.renderBrowserChart(browserData);
-		console.log(systemData);
 	},
 	formatSystemData: function(data){
 
@@ -80,7 +79,6 @@ var Chart = {
 			Safari: 0,
 			other: 0
 		};
-		console.info(data);
 		for(var i=0;i<data.length;i++){
 
 			var label = data[i].label;
@@ -220,4 +218,124 @@ var Chart = {
 		myChart.setOption(browserOption);
 	}
 };
+Chart.areaMap = {
+	data:{"status":0,"msg":"",
+		"data":{
+			"fields":["simple_district_title","pv_count","ratio"],
+			"items":[
+			[
+				["\u5317\u4eac"],["\u65b0\u7586"],["\u5e7f\u4e1c"],["\u6cb3\u5357"],["\u6e56\u5357"],["\u5c71\u897f"],
+				["\u4e91\u5357"],["\u5b89\u5fbd"],["\u5c71\u4e1c"],["\u56db\u5ddd"],["\u6cb3\u5317"],["\u4e0a\u6d77"]
+			],
+			[
+				[4,0.52],[4,0.52],[10,1.31],[6,0.78],[1,0.13],[6,0.78],[6,0.78],[8,1.05],[10,1.31],[30,3.92],[4,0.52],
+				[30,88.37]
+			],[],[]]
+		}
+	},
+	init: function(){
+		
+		this.getData();
+	},
+	getData: function(){
+		var items = this.data.data.items;
+		var provinceList =  items[0];
+		var dataList =  items[1];
+		console.log(provinceList);
+		console.log(dataList);
+		var datas  = []; 
+		for(var i = 0;i<provinceList.length;i++){
+			if(provinceList[i][0]=='上海'){
+				this.max = dataList[i][0];
+			}
+			datas.push({value: dataList[i][0],name: provinceList[i][0]});
+		}
+		this.renderChart(datas);
+	},
+	renderChart:function(datas){
+
+		var me = this;
+		// unescape('\u5e7f\u4e1c')
+		var option = {
+			title: {
+				text: "客户访问量地域统计",
+				subtext: "不完全统计",
+				x: "center"
+			},
+			tooltip: {
+				trigger: "item",
+				show: true,
+				formatter: '访问量<br>{b}：{c}'
+			},
+			legend: {
+				orient: "vertical",
+				x: "left",
+				data: ["访问量"]
+			},
+			dataRange: {
+				min: 0,
+				max: me.max,
+				x: "left",
+				y: "bottom",
+				text: ["高", "低"],
+				calculable: true,
+				color: ["#006edd", "#e0ffff"]
+			},
+			toolbox: {
+				show: true,
+				orient: "vertical",
+				x: "right",
+				y: "bottom",
+				feature: {
+					dataView: {
+						readOnly: false
+					},
+					saveAsImage: {
+						show: true
+					}
+				}
+			},
+			roamController: {
+				mapTypeControl: {
+					china: true
+				},
+				x: "right",
+				show: true,
+				step: 15
+			},
+			series: [
+				{
+					name: "访问量",
+					type: "map",
+					mapType: "china",
+					roam: false,
+					mapValueCalculation: "sum",
+					itemStyle: {
+						emphasis: {
+							label: {
+								show: true
+							}
+						}
+					},
+					data: datas,
+					showLegendSymbol: false
+				}
+			]
+		}
+		var myChart = echarts.init(document.getElementById('area-chart-body'));
+		$.get('/js/json/china.json', function (chinaJson) {
+			console.log(chinaJson);
+			echarts.registerMap('china', chinaJson);
+			myChart.setOption({
+				series: [{
+					type: 'map',
+					map: 'china'
+				}]
+			});
+			myChart.setOption(option);
+		});
+	}
+}
+
 Chart.init();
+Chart.areaMap.init();
