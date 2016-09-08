@@ -73,7 +73,7 @@ var Chart = {
 		return obj;
 	},
 	formatBrowserData: function(data){
-
+		this.getBrowserVersion(data);
 		var obj = {
 			IE: 0,
 			firefox: 0,
@@ -85,24 +85,61 @@ var Chart = {
 		for(var i=0;i<data.length;i++){
 
 			var label = data[i].label;
-			
+			console.info(label);
 			if(/(msie\s|trident.*rv:)([\w.]+)/.test(label)||/Trident\/7.0/.test(label)){
 				// ie11 Trident\/7.0  http://www.xpc8.com/xitong/vista_win_7/vista_win_7_3887.html
 				obj.IE += data[i].pv;
 			}else if(/(Firefox)\/([\w.]+)/.test(label)){
 				obj.firefox += data[i].pv;
-			}else if(/(Chrome)\/([\w.]+)/.test(label)){
-				obj.chrome += data[i].pv;
 			}else if(/(opera).+version\/([\w.]+)/.test(label)){
 				obj.opera += data[i].pv;
 			}else if(/Version\/([\w.]+).*(Safari)/.test(label)){
 				obj.Safari += data[i].pv;
+			}else if(/(Chrome)\/([\w.]+)/.test(label)){
+				obj.chrome += data[i].pv;
 			}else{
 				console.warn(label);
 				obj.other += data[i].pv;
 			}
 		}
 		return obj;
+	},
+	getBrowserVersion: function(data){
+		var obj = {
+			'IE浏览器': 0,
+			'2345浏览器':0,
+			'QQ浏览器':0,
+			'火狐浏览器': 0,
+			chrome: 0,
+			opera: 0,
+			Safari: 0,
+			other: 0
+		};
+		for(var i=0;i<data.length;i++){
+			// navigator.userAgent
+			// http://www.bubuko.com/infodetail-535021.html
+			var label = data[i].label;
+			if(/(msie\s|trident.*rv:)([\w.]+)/.test(label)||/Trident\/7.0/.test(label)){
+				// ie11 Trident\/7.0  http://www.xpc8.com/xitong/vista_win_7/vista_win_7_3887.html
+				obj['IE浏览器'] += data[i].pv;
+			}else if(/QQBrowser\/\d{1,2}\./.test(label)){
+				obj['QQ浏览器'] += data[i].pv;
+			}else if(/2345Explorer\/\d{1,2}\./.test(label)){
+				obj['2345浏览器'] += data[i].pv;
+			}else if(/(Firefox)\/([\w.]+)/.test(label)){
+				obj['火狐浏览器'] += data[i].pv;
+			}else if(/(opera).+version\/([\w.]+)/.test(label)){
+				obj.opera += data[i].pv;
+			}else if(/Version\/([\w.]+).*(Safari)/.test(label)){
+				obj.Safari += data[i].pv;
+			}else if(/(Chrome)\/([\w.]+)/.test(label)){
+				obj.chrome += data[i].pv;
+			}else{
+				console.warn(label);
+				obj.other += data[i].pv;
+			}
+		}
+		console.warn(obj);
 	},
 	getBrowserData: function(data){
 
@@ -127,7 +164,7 @@ var Chart = {
 
 		for(var k in data){
 
-			if(data[k] == 0){continue;};
+			// if(data[k] == 0){continue;};
 			arr1.push(k);
 			arr2.push({
 				value:data[k], name:k
@@ -185,7 +222,7 @@ var Chart = {
 
 		var browserOption = {
 			title : {
-				text: '用户浏览器版本统计',
+				text: '用户浏览器内核版本统计',
 				subtext: '不完全统计',
 				x:'center'
 			},
