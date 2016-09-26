@@ -86,6 +86,7 @@ var Chart = {
 			'2345浏览器':0,
 			'QQ浏览器':0,
 			'火狐浏览器': 0,
+			'搜狗浏览器': 0,
 			chrome: 0,
 			opera: 0,
 			Safari: 0,
@@ -100,6 +101,8 @@ var Chart = {
 				obj['IE浏览器'] += data[i].pv;
 			}else if(/QQBrowser\/\d{1,2}\./.test(label)){
 				obj['QQ浏览器'] += data[i].pv;
+			}else if(/MetaSr/.test(label)){
+				obj['搜狗浏览器'] += data[i].pv;
 			}else if(/2345Explorer\/\d{1,2}\./.test(label)){
 				obj['2345浏览器'] += data[i].pv;
 			}else if(/(Firefox)\/([\w.]+)/.test(label)){
