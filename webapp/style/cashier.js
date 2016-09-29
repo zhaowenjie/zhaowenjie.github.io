@@ -118,7 +118,112 @@ var Chart = {
 				obj.other += data[i].pv;
 			}
 		}
+
+		this.renderChainBrowserChart(obj);
 		console.warn(obj);
+	},
+	renderChainBrowserChart: function(data){
+
+		var browserOption = {
+			title: {
+				text: "各个浏览器访问量",
+				padding: 5,
+				itemGap: 0
+			},
+			tooltip: {
+				trigger: "axis"
+			},
+			legend: {
+				data: ["各个浏览器访问量"]
+			},
+			toolbox: {
+				show: true,
+				feature: {
+					dataView: {
+						show: true,
+						readOnly: true
+					},
+					magicType: {
+						show: false,
+						type: ["line", "bar"]
+					},
+					saveAsImage: {
+						show: true
+					}
+				}
+			},
+			calculable: true,
+			xAxis: [
+				{
+					type: "category",
+					data: ["chrome", "火狐浏览器", "IE浏览器", "2345浏览器", "搜狗浏览器", "QQ浏览器", "其他"],
+					name: "月份",
+					nameLocation: "end",
+					nameTextStyle: {
+						color: "rgb(0, 0, 0)"
+					}
+				}
+			],
+			yAxis: [
+				{
+					type: "value",
+					nameTextStyle: {
+						color: "rgb(0, 0, 0)"
+					},
+					name: "收益 / 元",
+					nameLocation: "end"
+				}
+			],
+			series: [
+				{
+					name: "各个浏览器访问量",
+					type: "bar",
+					data: [data["chrome"], data["火狐浏览器"], data["IE浏览器"], data["2345浏览器"], data["搜狗浏览器"], data["QQ浏览器"], data["other"]],
+					markPoint: {
+						data: [
+							{
+								name: "年最高",
+								value: 182.2,
+								xAxis: 7,
+								yAxis: 183,
+								symbolSize: 18
+							},
+							{
+								name: "年最低",
+								value: 2.3,
+								xAxis: 11,
+								yAxis: 3
+							}
+						]
+					},
+					markLine: {
+						data: [
+							{
+								type: "average",
+								name: "平均值"
+							}
+						]
+					},
+					barWidth: 30,
+					barCategoryGap: "0%",
+					itemStyle: {
+						normal: {
+							borderRadius: 4
+						}
+					}
+				}
+			],
+			grid: {
+				width: '90%',
+				x: '5%',
+				x2: '5%'
+			},
+			color: ["rgb(255, 152, 2)", "rgb(89, 201, 200)", "#da70d6", "#32cd32", "#6495ed", "#ff69b4", "#ba55d3", "#cd5c5c", "#ffa500", "#40e0d0", "#1e90ff", "#ff6347", "#7b68ee", "#00fa9a", "#ffd700", "#6699FF", "#ff6666", "#3cb371", "#b8860b", "#30e0e0", "#FFFFFF"]
+		}
+
+		var myChart = echarts.init(document.getElementById('chain-browser-chart-body'));
+
+		myChart.setOption(browserOption);
 	},
 	getBrowserData: function(data){
 
@@ -187,6 +292,7 @@ var Chart = {
 
 		myChart.setOption(browserOption);
 	},
+
 	renderBrowserChart: function(data){
 		var arr1 = [],arr2 = [];
 
@@ -238,20 +344,8 @@ var Chart = {
 	}
 };
 Chart.areaMap = {
-	data:{"status":0,"msg":"",
-		"data":{
-			"fields":["simple_district_title","pv_count","ratio"],
-			"items":[
-			[
-				["\u5317\u4eac"],["\u65b0\u7586"],["\u5e7f\u4e1c"],["\u6cb3\u5357"],["\u6e56\u5357"],["\u5c71\u897f"],
-				["\u4e91\u5357"],["\u5b89\u5fbd"],["\u5c71\u4e1c"],["\u56db\u5ddd"],["\u6cb3\u5317"],["\u4e0a\u6d77"]
-			],
-			[
-				[4,0.52],[4,0.52],[10,1.31],[6,0.78],[1,0.13],[6,0.78],[6,0.78],[8,1.05],[10,1.31],[30,3.92],[4,0.52],
-				[30,88.37]
-			],[],[]]
-		}
-	},
+	// 地域map
+	data:{"status":0,"msg":"","data":{"fields":["simple_district_title","pv_count","ratio"],"items":[[["\u4e0a\u6d77"],["\u5e7f\u4e1c"],["\u56db\u5ddd"],["\u6cb3\u5357"],["\u5c71\u4e1c"],["\u5b89\u5fbd"],["\u4e91\u5357"],["\u6cb3\u5317"],["\u5c71\u897f"],["\u5176\u4f59\u5730\u533a"],["\u5e7f\u897f"],["\u5185\u8499\u53e4"],["\u65b0\u7586"],["\u5317\u4eac"],["\u6d59\u6c5f"],["\u6e56\u5357"],["\u6c5f\u82cf"]],[[125,27.35],[72,15.75],[45,9.85],[37,8.1],[31,6.78],[31,6.78],[24,5.25],[24,5.25],[19,4.16],[49,10.72],[11,2.41],[10,2.19],[9,1.97],[5,1.09],[4,0.88],[4,0.88],[2,0.44]]]}},
 	init: function(){
 		
 		this.getData();
