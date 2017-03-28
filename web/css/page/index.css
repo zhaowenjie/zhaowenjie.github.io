@@ -1,0 +1,148 @@
+a,a:hover,a:visited{
+	text-decoration: none;
+}
+
+header{
+	width:1000px;
+	margin:0 auto;
+	font-size:14px;
+	padding: 10px 15px;
+	height: 73px;
+}
+#logo{
+	width:202px;
+	height:52px;
+	float:left;	
+	background: #f00;
+}
+#menu{
+	margin-bottom:-10px; 
+}
+.menu{
+	list-style:none;
+	padding-left:0px;
+}
+#menu .menu li{
+	float:left;
+}
+#menu > .menu > li > a{
+	outline: none;
+	width:70px;
+	display: inline-block;
+	font-family: "Microsoft YaHei";
+	font-size:14px;
+	font-weight:500;
+	color:#777;
+	padding-top: 15px;
+	text-align: center;
+	margin: 0px 15px;
+	height: 63px;
+}
+#menu > .menu >li> a:hover{
+	color:#428bca;
+	border-bottom: 3px solid #428bca; 
+}
+#menu .menu li a.active{
+	color:#428bca;
+	border-bottom: 3px solid #428bca;	
+}
+/*banner*/
+.dcf-banner{
+	width: 1000px;
+	margin: 0 auto 10px;
+	position: relative;
+}
+.dcf-banner .banner-content{
+	position: relative;
+	height: 256px;
+}
+.dcf-banner .banner-list{
+	height: 256px;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: absolute;
+	display: none;
+}
+.dcf-banner .banner-list:nth-child(1){
+	display: block;
+}
+.dcf-banner:hover .banner-btn-group{
+	opacity: 0.15;
+	filter: alpha(opacity=15);
+}
+.dcf-banner .banner-btn-group{
+	background: #f00;
+	padding: 2px 6px;
+	background-color: #000;
+	transition: opacity 0.3s ease 0s;
+	position: absolute;
+	bottom: 10px;
+	left: 45%;
+	border-radius: 20px;
+	/*opacity: 0;*/
+	/*filter: alpha(opacity=0);*/
+	opacity: 0.15;
+	filter: alpha(opacity=15);
+}
+.dcf-banner .banner-btn-group .banner-btn{
+	padding: 2px;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 12px;
+}
+.dcf-banner .banner-btn-group .banner-btn span{
+	border-radius: 6px;
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+	display: inline-block;
+	background: #fff;
+	-moz-transition: width 0.5s;
+	-webkit-transition: width 0.5s;
+	-o-transition: width 0.5s;
+	transition: width 0.5s;
+}
+.dcf-banner .banner-btn-group .banner-btn.active span{
+	width: 32px;
+}
+.dcf-banner .banner-list.banner-list01{
+	background-color: #f00;
+	background-image: url("/assets/images/dcf/index/banner/banner_2016121301.png");
+}
+.dcf-banner .banner-list.banner-list02{
+	background-color: #0f0;
+	background-image: url("/assets/images/dcf/index/banner/banner_2016121302.png");
+}
+.dcf-banner .banner-list.banner-list03{
+	background-color: #00f;
+	background-image: url("/assets/images/dcf/index/banner/banner_2016121303.png");
+}
+
+/*广告区*/
+.ad-content{
+}
+.ad-content li{
+	margin: 0 auto;
+	height: 60px;
+	width: 1000px;
+	background: #0f0;
+	margin-bottom: 3px;
+}
+.ad-content-sm{
+	width: 1000px;
+	margin: 10px auto;
+}
+.ad-content-sm li{
+	width: 240px;
+	float: left;
+	height: 60px;
+	margin-right: 13px;
+	margin-bottom: 10px;
+	background: #0ff;
+}
+.ad-content-sm li:nth-child(4n){
+	margin-right: 0;
+}
