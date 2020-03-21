@@ -10,13 +10,19 @@
 	border-bottom: 3px solid #428bca;
     color: #428bca;
 }
+.clearfix:after {
+	content:""; 
+	display: block; 
+	clear:both; 
+ }
+ .banner{
+	height: 200px;
+ }
 .page-header{
   margin-top: 0;
   position: absolute;
   width: 100%;
-  padding: 100px 100px;
-}
-.banner{
+	height: 200px;
 }
 .banner1{
 	background-image:linear-gradient(120deg, #FF6600 , #FFCC00);
@@ -33,11 +39,22 @@
 }
 .story{
 	text-align: right;
-	margin-top: 338px;
 	padding-right: 30px;
 	background:#f1f2f7;
 }
 .story p{
 	padding: 15px 0;
 	margin: 0;
+}
+.foot{
+	text-align: center;
+	padding-top: 10px;
+}
+.foot a{
+	line-height: 30px;
+	color: #333;
+	font-size:14px;
+}
+.foot a:hover{
+	text-decoration: underline;
 }
